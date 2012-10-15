@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D3299065-C743-4C69-B649-89286669AF80}</ProjectGuid>
+    <ProjectGuid>{9C77A12F-AC50-408E-967D-3B74BC806DB8}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ZeroDay.NatGeoScraper</RootNamespace>
-    <AssemblyName>ZeroDay.NatGeoScraper</AssemblyName>
+    <RootNamespace>NatGeoScraper</RootNamespace>
+    <AssemblyName>NatGeoScraper</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -44,17 +44,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IScraper.cs" />
+    <Compile Include="Logic\NatGeoScraper.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Logic\ScraperService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ZeroDay.DAL\ZeroDay.DAL.csproj">
-      <Project>{ed4dc243-57fb-4f26-9043-cbc10200e2f6}</Project>
-      <Name>ZeroDay.DAL</Name>
-    </ProjectReference>
+    <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
