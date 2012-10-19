@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace ZeroDay.DAL.Models.NatGeo
 {
@@ -16,5 +17,15 @@ namespace ZeroDay.DAL.Models.NatGeo
         public string Description { get; set; }
 
         public virtual Category Category { get; set; }
+
+        public DateTime Date { get; set; }
+
+        public string PreviousDayUrl { get; set; }
+
+        public string DownloadUrl { get; set; }
+
+        public string Photographer { get; set; }
+
+        public string PhotographerUrl { get; set; }
     }
 }

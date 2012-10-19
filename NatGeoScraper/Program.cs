@@ -1,4 +1,5 @@
-﻿using Topshelf;
+﻿using System;
+using Topshelf;
 
 namespace NatGeoScraper
 {
@@ -6,20 +7,33 @@ namespace NatGeoScraper
     {
         static void Main(string[] args)
         {
-            HostFactory.Run(x =>                                 
+            try
             {
-                x.Service<ScraperService>(s =>                        
-                {
-                    s.ConstructUsing(name => new ScraperService());     
-                    s.WhenStarted(tc => tc.Start());              
-                    s.WhenStopped(tc => tc.Stop());               
-                });
-                x.RunAsLocalSystem();                            
+                StartService();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.ReadKey();
+            }
+        }
 
-                x.SetDescription("Scraping Data From Nat Geo");        
-                x.SetDisplayName("NatGeo Scraper");                       
-                x.SetServiceName("NatGeo Scraper");                       
-            });  
+        private static void StartService()
+        {
+            HostFactory.Run(x =>
+            {
+                x.Service<ScraperService>(s =>
+                {
+                    s.ConstructUsing(name => new ScraperService());
+                    s.WhenStarted(tc => tc.Start());
+                    s.WhenStopped(tc => tc.Stop());
+                });
+                x.RunAsLocalSystem();
+
+                x.SetDescription("Scraping Data From Nat Geo");
+                x.SetDisplayName("NatGeoScraper");
+                x.SetServiceName("NatGeoScraper");
+            });
         }
     }
 }
