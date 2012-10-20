@@ -5,7 +5,7 @@
     <DeployUsername>WDeployAdmin</DeployUsername>
     <DeployPassword>"Password1,"</DeployPassword>
     <DeployWebSiteName>"Default Web Site"</DeployWebSiteName>
-    <PublishedWebsiteFolder>_Output</PublishedWebsiteFolder>
+    <PublishedWebsiteFolder>ZeroDay.API\_Output\Package.zip</PublishedWebsiteFolder>
   </PropertyGroup>
 
   <Target Name="DeployAPI" DependsOnTargets="TransformWebConfig">
