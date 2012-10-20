@@ -1,9 +1,9 @@
 <Project ToolsVersion="4.0" DefaultTargets="Default" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
-    <TargetServer>ec2-184-73-116-39.compute-1.amazonaws.com</TargetServer>
-    <DeployUsername>WDeployAdmin</DeployUsername>
-    <DeployPassword>"Password1,"</DeployPassword>
+    <TargetServer>https://AMAZONA-LG3QEGE:8172/msdeploy.axd</TargetServer>
+    <DeployUsername>Administrator</DeployUsername>
+    <DeployPassword>ST3PAPmvMb</DeployPassword>
     <DeployWebSiteName>"Default Web Site"</DeployWebSiteName>
     <PublishedWebsitePackage>Package.zip</PublishedWebsitePackage>
   </PropertyGroup>
