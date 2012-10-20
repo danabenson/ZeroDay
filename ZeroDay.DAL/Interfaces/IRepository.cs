@@ -7,6 +7,8 @@ namespace ZeroDay.DAL.Interfaces
         T GetById(int id);
 
         void Update(T entity);
+        
+        void Add(T entity);
 
         void Delete(T entity);
 

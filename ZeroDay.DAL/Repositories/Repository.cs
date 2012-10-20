@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ZeroDay.DAL.Contexts;
 using ZeroDay.DAL.Interfaces;
 
 namespace ZeroDay.DAL.Repositories
 {
-    public abstract class Repository<T> : IRepository<T> where T: class
+    public abstract class Repository<T> : IRepository<T> where T : class
     {
         private readonly NatGeoContext _context;
 
@@ -17,6 +14,8 @@ namespace ZeroDay.DAL.Repositories
             _context = context;
         }
 
+        #region IRepository<T> Members
+
         public T GetById(int id)
         {
             return _context.Set<T>().Find(id);
@@ -24,17 +23,29 @@ namespace ZeroDay.DAL.Repositories
 
         public void Update(T entity)
         {
-            throw new NotImplementedException();
+            _context.Set<T>().Attach(entity);
+            _context.Entry(entity).State = EntityState.Modified;
+            _context.SaveChanges();
+        }
+
+        public void Add(T entity)
+        {
+            _context.Set<T>().Add(entity);
+            _context.SaveChanges();
         }
 
         public void Delete(T entity)
         {
-            throw new NotImplementedException();
+            _context.Set<T>().Attach(entity);
+            _context.Entry(entity).State = EntityState.Deleted;
+            _context.SaveChanges();
         }
 
         public IQueryable<T> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Set<T>().AsQueryable();
         }
+
+        #endregion
     }
 }

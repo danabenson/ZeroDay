@@ -125,7 +125,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\NatGeoImagesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -142,6 +142,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ZeroDay.Core\ZeroDay.Core.csproj">
+      <Project>{9c8f0b2d-ffe6-41f7-9964-608a416c4066}</Project>
+      <Name>ZeroDay.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ZeroDay.DAL\ZeroDay.DAL.csproj">
       <Project>{ed4dc243-57fb-4f26-9043-cbc10200e2f6}</Project>
       <Name>ZeroDay.DAL</Name>
