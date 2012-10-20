@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputDir>$(MSBuildProjectDirectory)\Output</OutputDir>
-    <TargetServer>https://ip-10-28-53-117.ec2.internal:8172/msdeploy.axd</TargetServer>
+    <TargetServer>https://AMAZONA-LG3QEGE:8172/msdeploy.axd</TargetServer>
     <DeployUsername>Administrator</DeployUsername>
     <DeployPassword>ST3PAPmvMb</DeployPassword>
     <DeployWebSiteName>"Default Web Site"</DeployWebSiteName>
