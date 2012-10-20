@@ -5,11 +5,11 @@
     <DeployUsername>WDeployAdmin</DeployUsername>
     <DeployPassword>"Password1,"</DeployPassword>
     <DeployWebSiteName>"Default Web Site"</DeployWebSiteName>
-    <PublishedWebsiteFolder>ZeroDay.API\_Output\Package.zip</PublishedWebsiteFolder>
+    <PublishedWebsitePackage>Package.zip</PublishedWebsitePackage>
   </PropertyGroup>
 
-  <Target Name="DeployAPI" DependsOnTargets="TransformWebConfig">
-    <Exec Command="msdeploy -verb:sync -source:iisApp=&quot;$(PublishedWebsiteFolder)&quot; -dest:iisApp=$(DeployWebSiteName),wmsvc=$(TargetServer),userName=$(DeployUsername),password=$(DeployPassword) -allowUntrusted" />
+  <Target Name="DeployAPI">
+    <Exec Command="msdeploy -verb:sync -source:iisApp=&quot;$(PublishedWebsitePackage)&quot; -dest:iisApp=$(DeployWebSiteName),wmsvc=$(TargetServer),userName=$(DeployUsername),password=$(DeployPassword) -allowUntrusted" />
   </Target>
 
   <Target Name="BuildAPI">
