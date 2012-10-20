@@ -6,7 +6,7 @@
     <DeployUsername>Administrator</DeployUsername>
     <DeployPassword>ST3PAPmvMb</DeployPassword>
     <DeployWebSiteName>"Default Web Site"</DeployWebSiteName>
-    <PublishedWebsiteFolder>./_Output</PublishedWebsiteFolder>
+    <PublishedWebsiteFolder>ZeroDay.API</PublishedWebsiteFolder>
   </PropertyGroup>
 
   <Target Name="DeployAPI">
@@ -16,7 +16,7 @@
   <Target Name="BuildAPI">
     <ItemGroup>
       <ProjectToBuild Include="ZeroDay.sln">
-        <Properties>OutputPath=$(OutputDir);Configuration=Release;MvcBuildViews=true</Properties>
+        <Properties>OutputPath=$(OutputDir);Configuration=Release;MvcBuildViews=false</Properties>
       </ProjectToBuild>
     </ItemGroup>
     <MSBuild Projects="@(ProjectToBuild)"/>
