@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <Target Name="DeployAPI">
-    <Exec Command="$(MSDeploy) -verb:sync -source:iisApp=&quot;$(PublishedWebsiteFolderLocal)&quot; -dest:iisApp=$(DeployWebSiteName),wmsvc=$(TargetServer),userName=$(DeployUsername),password=$(DeployPassword) -allowUntrusted" />
+    <Exec Command="$(MSDeploy) -verb:sync -source:iisApp=&quot;$(PublishedWebsiteFolder)&quot; -dest:iisApp=$(DeployWebSiteName),wmsvc=$(TargetServer),userName=$(DeployUsername),password=$(DeployPassword) -allowUntrusted" />
   </Target>
 
   <Target Name="BuildAPI">
