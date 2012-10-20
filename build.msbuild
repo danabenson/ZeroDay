@@ -1,0 +1,20 @@
+<Project ToolsVersion="4.0" DefaultTargets="Default" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <TargetServer>ec2-184-73-116-39.compute-1.amazonaws.com</TargetServer>
+    <DeployUsername>WDeployAdmin</DeployUsername>
+    <DeployPassword>"Password1,"</DeployPassword>
+    <DeployWebSiteName>"Default Web Site"</DeployWebSiteName>
+    <PublishedWebsiteFolder>_Output</PublishedWebsiteFolder>
+  </PropertyGroup>
+
+  <Target Name="DeployAPI" DependsOnTargets="TransformWebConfig">
+    <Exec Command="msdeploy -verb:sync -source:iisApp=&quot;$(PublishedWebsiteFolder)&quot; -dest:iisApp=$(DeployWebSiteName),wmsvc=$(TargetServer),userName=$(DeployUsername),password=$(DeployPassword) -allowUntrusted" />
+  </Target>
+
+  <Target Name="BuildAPI">
+    <MSBuild Projects="ZeroDay.sln" Properties="configuration=release" />
+    <MSBuild Projects="ZeroDay.API\ZeroDay.API.csproj" Targets="Package" Properties="PackageLocation=$(PublishedWebsiteFolder)\Package.zip;_PackageTempDir=C:\Temp\Web"/>
+  </Target>
+
+</Project>

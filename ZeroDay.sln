@@ -9,6 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NatGeoScraper", "NatGeoScra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZeroDay.Core", "ZeroDay.Core\ZeroDay.Core.csproj", "{9C8F0B2D-FFE6-41F7-9964-608A416C4066}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{06FF2C22-132D-4831-84B7-05A205137B6B}"
+	ProjectSection(SolutionItems) = preProject
+		build.msbuild = build.msbuild
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
