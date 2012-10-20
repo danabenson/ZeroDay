@@ -6,11 +6,12 @@
     <DeployUsername>Administrator</DeployUsername>
     <DeployPassword>ST3PAPmvMb</DeployPassword>
     <DeployWebSiteName>"Default Web Site"</DeployWebSiteName>
-    <PublishedWebsiteFolder>ZeroDay.API</PublishedWebsiteFolder>
+    <PublishedWebsiteFolder>$(MSBuildProjectDirectory)\ZeroDay.API</PublishedWebsiteFolder>
+    <MSDeploy>"C:\Program Files\IIS\Microsoft Web Deploy V3\msdeploy.exe"</MSDeploy>
   </PropertyGroup>
 
   <Target Name="DeployAPI">
-    <Exec Command="msdeploy -verb:sync -source:iisApp=&quot;$(PublishedWebsitePackage)&quot; -dest:iisApp=$(DeployWebSiteName),wmsvc=$(TargetServer),userName=$(DeployUsername),password=$(DeployPassword) -allowUntrusted" />
+    <Exec Command="$(MSDeploy) -verb:sync -source:iisApp=&quot;$(PublishedWebsiteFolderLocal)&quot; -dest:iisApp=$(DeployWebSiteName),wmsvc=$(TargetServer),userName=$(DeployUsername),password=$(DeployPassword) -allowUntrusted" />
   </Target>
 
   <Target Name="BuildAPI">
