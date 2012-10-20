@@ -1,11 +1,12 @@
 <Project ToolsVersion="4.0" DefaultTargets="Default" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
+    <OutputDir>$(MSBuildProjectDirectory)\Output</OutputDir>
     <TargetServer>https://AMAZONA-LG3QEGE:8172/msdeploy.axd</TargetServer>
     <DeployUsername>Administrator</DeployUsername>
     <DeployPassword>ST3PAPmvMb</DeployPassword>
     <DeployWebSiteName>"Default Web Site"</DeployWebSiteName>
-    <PublishedWebsitePackage>Package.zip</PublishedWebsitePackage>
+    <PublishedWebsiteFolder>./_Output</PublishedWebsiteFolder>
   </PropertyGroup>
 
   <Target Name="DeployAPI">
@@ -13,8 +14,12 @@
   </Target>
 
   <Target Name="BuildAPI">
-    <MSBuild Projects="ZeroDay.sln" Properties="configuration=release" />
-    <MSBuild Projects="ZeroDay.API\ZeroDay.API.csproj" Targets="Package" Properties="PackageLocation=$(PublishedWebsiteFolder)\Package.zip;_PackageTempDir=C:\Temp\Web"/>
+    <ItemGroup>
+      <ProjectToBuild Include="ZeroDay.sln">
+        <Properties>OutputPath=$(OutputDir);Configuration=Release;MvcBuildViews=true</Properties>
+      </ProjectToBuild>
+    </ItemGroup>
+    <MSBuild Projects="@(ProjectToBuild)"/>
   </Target>
 
 </Project>

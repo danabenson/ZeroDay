@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <setParameter name="IIS Web Application Name" value="Default Web Site/ZeroDay.API_deploy" />
+  <setParameter name="NatGeo-Web.config Connection String" value="localhost;Initial Catalog=NatGeo;Integrated Security=True;" />
+</parameters>

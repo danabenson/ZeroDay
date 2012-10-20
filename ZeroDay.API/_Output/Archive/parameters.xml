@@ -1,0 +1,9 @@
+﻿<parameters>
+  <parameter name="IIS Web Application Name" defaultValue="Default Web Site/ZeroDay.API_deploy" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Dana\\Documents\\GitHub\\ZeroDay\\ZeroDay\.API\\obj\\Debug\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Dana\\Documents\\GitHub\\ZeroDay\\ZeroDay\.API\\obj\\Debug\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="NatGeo-Web.config Connection String" description="NatGeo Connection String used in web.config by the application to access the database." defaultValue="localhost;Initial Catalog=NatGeo;Integrated Security=True;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Dana\\Documents\\GitHub\\ZeroDay\\ZeroDay\.API\\obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='NatGeo']/@connectionString" />
+  </parameter>
+</parameters>
