@@ -75,7 +75,14 @@ namespace NatGeoScraper.Logic
             {
                 return;
             }
-            var a = credit.ChildNodes.First(x => x.Name == "a");
+
+
+            var a = credit.ChildNodes.FirstOrDefault(x => x.Name == "a");
+
+            if (a == null)
+            {
+              return;
+            }
 
             image.Photographer = a.InnerText;
             image.PhotographerUrl = a.GetAttributeValue("href", string.Empty);
@@ -86,13 +93,19 @@ namespace NatGeoScraper.Logic
             HtmlNode dl =
                 doc.DocumentNode.Descendants().FirstOrDefault(x => x.GetAttributeValue("class", string.Empty) == "download_link");
 
-            if (dl != null)
+            if (dl == null)
             {
-                HtmlNode a = dl.ChildNodes.First();
+                return;
+            }
+            HtmlNode a = dl.ChildNodes.FirstOrDefault();
+
+            if (a == null)
+            {
+                return;
+            }
                 string link = a.GetAttributeValue("href", string.Empty);
 
                 image.DownloadUrl = link;    
-            }
         }
     }
 }

@@ -12,7 +12,6 @@ namespace NatGeoScraper
         {
             log = LogManager.GetLogger(typeof(Program));
             log4net.Config.XmlConfigurator.Configure();
-            log.Debug("test message");
             
             try
             {
