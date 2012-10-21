@@ -27,7 +27,7 @@ namespace ZeroDay.API.Controllers
         private NatGeoImage GetImage(Image i)
         {
             var ii = new NatGeoImage();
-            ii.Date = i.Date;
+            ii.Date = i.Date.ToString("MM/dd/yyyy");
             ii.Description = i.Description;
             ii.DownloadUrl = i.DownloadUrl;
             ii.Id = i.Id;
