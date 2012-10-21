@@ -50,7 +50,7 @@ namespace NatGeoScraper.Logic
                     x => x.GetAttributeValue("class", string.Empty) == "primary_photo" && x.Name == "div");
 
             HtmlNode prevLink = primary.ChildNodes.First(x => x.Name == "a");
-
+            
             string prevLinkRef = prevLink.GetAttributeValue("href", string.Empty);
 
             image.PreviousDayUrl = "http://photography.nationalgeographic.com" + prevLinkRef;
@@ -61,7 +61,24 @@ namespace NatGeoScraper.Logic
 
             image.Url = potdImage.GetAttributeValue("src", string.Empty);
 
+            GetPhotographer();   
+
             return image;
+        }
+
+        private void GetPhotographer()
+        {
+            var credit =
+                doc.DocumentNode.Descendants().FirstOrDefault(
+                    x => x.GetAttributeValue("class", string.Empty) == "credit");
+            if (credit == null)
+            {
+                return;
+            }
+            var a = credit.ChildNodes.First(x => x.Name == "a");
+
+            image.Photographer = a.InnerText;
+            image.PhotographerUrl = a.GetAttributeValue("href", string.Empty);
         }
 
         private void GetDownloadLink()
