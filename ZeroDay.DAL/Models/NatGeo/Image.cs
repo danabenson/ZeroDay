@@ -1,8 +1,11 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
 
 namespace ZeroDay.DAL.Models.NatGeo
 {
+    [KnownType(typeof(Image))]
+    [Serializable]
     public class Image
     {
         [Key]
