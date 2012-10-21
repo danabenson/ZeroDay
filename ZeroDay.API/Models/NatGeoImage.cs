@@ -1,12 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Runtime.Serialization;
+using System.Linq;
+using System.Web;
 
-namespace ZeroDay.DAL.Models.NatGeo
+namespace ZeroDay.API.Models
 {
-    public class Image
+    public class NatGeoImage
     {
-        [Key]
         public int Id { get; set; }
 
         public string Url { get; set; }
@@ -14,14 +15,10 @@ namespace ZeroDay.DAL.Models.NatGeo
         public string ThumbnailUrl { get; set; }
 
         public string Title { get; set; }
-        
+
         public string Description { get; set; }
 
-        public virtual Category Category { get; set; }
-
         public DateTime Date { get; set; }
-
-        public string PreviousDayUrl { get; set; }
 
         public string DownloadUrl { get; set; }
 

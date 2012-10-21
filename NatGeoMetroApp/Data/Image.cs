@@ -1,12 +1,10 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.Runtime.Serialization;
 
-namespace ZeroDay.DAL.Models.NatGeo
+namespace NatGeoMetroApp.Data
 {
     public class Image
     {
-        [Key]
         public int Id { get; set; }
 
         public string Url { get; set; }
@@ -14,14 +12,10 @@ namespace ZeroDay.DAL.Models.NatGeo
         public string ThumbnailUrl { get; set; }
 
         public string Title { get; set; }
-        
+
         public string Description { get; set; }
 
-        public virtual Category Category { get; set; }
-
         public DateTime Date { get; set; }
-
-        public string PreviousDayUrl { get; set; }
 
         public string DownloadUrl { get; set; }
 
