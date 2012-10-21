@@ -14,5 +14,7 @@ namespace ZeroDay.DAL.Contexts
         public DbSet<Image> Images { get; set; }
 
         public DbSet<Category> Categories { get; set; }
+
+        public DbSet<Log> Logs { get; set; }
     }
 }

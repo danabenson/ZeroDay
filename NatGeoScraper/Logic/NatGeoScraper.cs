@@ -2,6 +2,7 @@
 using NatGeoScraper.Interfaces;
 using ZeroDay.DAL.Interfaces;
 using ZeroDay.DAL.Models.NatGeo;
+using log4net;
 
 namespace NatGeoScraper.Logic
 {
@@ -12,15 +13,18 @@ namespace NatGeoScraper.Logic
         private readonly IImageRepository _natGeoRepository;
         
         private readonly IPhotoOfTheDayParser _potdParser;
+        private readonly ILog _logger;
 
         public NatGeoScraper(
             IHtmlDocumentProvider docProvider, 
             IImageRepository natGeoRepository,
-            IPhotoOfTheDayParser potdParser)
+            IPhotoOfTheDayParser potdParser, 
+            ILog logger)
         {
             _docProvider = docProvider;
             _natGeoRepository = natGeoRepository;
             _potdParser = potdParser;
+            _logger = logger;
         }
 
         public void Scrape()
@@ -36,6 +40,7 @@ namespace NatGeoScraper.Logic
             }
             catch (Exception e)
             {
+                _logger.Error(e.Message);
             }
         }
 
@@ -48,6 +53,7 @@ namespace NatGeoScraper.Logic
                 daily = _potdParser.Parse(doc, url);
                 daily.Date = date;
                 _natGeoRepository.Add(daily);
+                _logger.Info("Got potd for " + daily.Date);
             }
             return daily;
         }

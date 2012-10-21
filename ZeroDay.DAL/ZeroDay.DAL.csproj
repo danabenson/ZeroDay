@@ -38,6 +38,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,9 +48,14 @@
   <ItemGroup>
     <Compile Include="Interfaces\IImageRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Migrations\201210210303257_InitialCreate.cs" />
+    <Compile Include="Migrations\201210210303257_InitialCreate.Designer.cs">
+      <DependentUpon>201210210303257_InitialCreate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\NatGeo\Image.cs" />
     <Compile Include="Models\NatGeo\Category.cs" />
+    <Compile Include="Models\NatGeo\Log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Contexts\NatGeoContext.cs" />
     <Compile Include="Repositories\NatGeoRepository.cs" />
@@ -59,7 +65,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201210210303257_InitialCreate.resx">
+      <DependentUpon>201210210303257_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,19 +1,17 @@
+using System.Data.Entity.Migrations;
+using ZeroDay.DAL.Contexts;
+
 namespace ZeroDay.DAL.Migrations
 {
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
-
-    internal sealed class Configuration : DbMigrationsConfiguration<ZeroDay.DAL.Contexts.NatGeoContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<NatGeoContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = true;
+            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationDataLossAllowed = false;
         }
 
-        protected override void Seed(ZeroDay.DAL.Contexts.NatGeoContext context)
+        protected override void Seed(NatGeoContext context)
         {
             //  This method will be called after migrating to the latest version.
 

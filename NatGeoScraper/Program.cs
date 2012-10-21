@@ -1,12 +1,19 @@
 ﻿using System;
 using Topshelf;
+using log4net;
 
 namespace NatGeoScraper
 {
     public class Program
     {
+        private static log4net.ILog log;
+
         static void Main(string[] args)
         {
+            log = LogManager.GetLogger(typeof(Program));
+            log4net.Config.XmlConfigurator.Configure();
+            log.Debug("test message");
+            
             try
             {
                 StartService();
@@ -24,7 +31,7 @@ namespace NatGeoScraper
             {
                 x.Service<ScraperService>(s =>
                 {
-                    s.ConstructUsing(name => new ScraperService());
+                    s.ConstructUsing(name => new ScraperService(log));
                     s.WhenStarted(tc => tc.Start());
                     s.WhenStopped(tc => tc.Stop());
                 });
