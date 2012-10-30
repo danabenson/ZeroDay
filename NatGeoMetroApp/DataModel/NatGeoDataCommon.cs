@@ -4,7 +4,7 @@ using Windows.Foundation.Metadata;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 
-namespace NatGeoMetroApp.Data
+namespace NatGeoMetroApp.DataModel
 {
     /// <summary>
     /// Base class for <see cref="NatGeoImage"/> and <see cref="NatGeoDataGroup"/> that
@@ -21,17 +21,14 @@ namespace NatGeoMetroApp.Data
         
         private String _url;
         
-        private string _subtitle = string.Empty;
-        
         private string _title = string.Empty;
 
         private string _uniqueId = string.Empty;
 
-        public NatGeoDataCommon(String uniqueId, String title, String subtitle, String url, String description)
+        public NatGeoDataCommon(String uniqueId, String title, String url, String description)
         {
             _uniqueId = uniqueId;
             _title = title;
-            _subtitle = subtitle;
             _description = description;
             _url = url;
         }
@@ -46,12 +43,6 @@ namespace NatGeoMetroApp.Data
         {
             get { return _title; }
             set { SetProperty(ref _title, value); }
-        }
-
-        public string Subtitle
-        {
-            get { return _subtitle; }
-            set { SetProperty(ref _subtitle, value); }
         }
 
         public string Description

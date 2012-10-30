@@ -1,31 +1,20 @@
-using System;
-
-namespace NatGeoMetroApp.Data
+namespace NatGeoMetroApp.DataModel
 {
     public class NatGeoImage : NatGeoDataCommon
     {
-        private string _content = string.Empty;
-
-        private NatGeoDataGroup _group;
-
-        public NatGeoImage(String uniqueId, String title, String subtitle, String imagePath, String description,
-                           String content, NatGeoDataGroup group)
-            : base(uniqueId, title, subtitle, imagePath, description)
+        public NatGeoImage(
+            string uniqueId, 
+            string title, 
+            string imagePath, 
+            string description)
+            : base(uniqueId, title, imagePath, description)
         {
-            _content = content;
-            _group = group;
         }
 
-        public string Content
-        {
-            get { return _content; }
-            set { SetProperty(ref _content, value); }
-        }
+        public string PhotographerName { get; set; }
 
-        public NatGeoDataGroup Group
-        {
-            get { return _group; }
-            set { SetProperty(ref _group, value); }
-        }
+        public string PhotographerUrl { get; set; }
+
+        public string Date { get; set; }
     }
 }

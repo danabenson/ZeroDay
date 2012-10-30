@@ -107,16 +107,19 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\StringExtensions.cs" />
+    <Compile Include="DataModel\Design\SampleDataCommon.cs" />
+    <Compile Include="DataModel\Design\SampleDataGroup.cs" />
+    <Compile Include="DataModel\Design\SampleDataItem.cs" />
+    <Compile Include="DataModel\Design\SampleDataSource.cs" />
     <Compile Include="DataModel\NatGeoDataCommon.cs" />
     <Compile Include="DataModel\NatGeoDataGroup.cs" />
     <Compile Include="DataModel\NatGeoImage.cs" />
+    <Compile Include="DataModel\NatGeoImageCollection.cs" />
+    <Compile Include="DataModel\NatGeoImageLoader.cs" />
     <Compile Include="Data\Image.cs" />
     <Compile Include="Data\NatGeoImageProvider.cs" />
     <Compile Include="GroupedItemsPage.xaml.cs">
       <DependentUpon>GroupedItemsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="GroupDetailPage.xaml.cs">
-      <DependentUpon>GroupDetailPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ItemDetailPage.xaml.cs">
       <DependentUpon>ItemDetailPage.xaml</DependentUpon>
@@ -156,10 +159,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="GroupedItemsPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="GroupDetailPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -15,7 +15,7 @@ namespace NatGeoMetroApp.Data
 
         public string Description { get; set; }
 
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
 
         public string DownloadUrl { get; set; }
 

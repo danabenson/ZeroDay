@@ -1,22 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
-using System.Threading.Tasks;
 using NatGeoMetroApp.Common;
+using NatGeoMetroApp.DataModel;
 
 namespace NatGeoMetroApp.Data
 {
     public class NatGeoImageProvider
     {
         private const string host = "http://ec2-184-73-116-39.compute-1.amazonaws.com/api/NatGeoImages";
-        private readonly NatGeoDataGroup _potdGroup;
+
+        private readonly NatGeoImageCollection _natGeoImageCollection;
 
         private HttpClient _client;
 
-        public NatGeoImageProvider(NatGeoDataGroup potdGroup)
+        public NatGeoImageProvider(NatGeoImageCollection natGeoImageCollection)
         {
-            _potdGroup = potdGroup;
+            _natGeoImageCollection = natGeoImageCollection;
         }
 
         public async void GetImages()
@@ -25,13 +25,20 @@ namespace NatGeoMetroApp.Data
             HttpResponseMessage response = await _client.GetAsync(host);
             string textRespose = await response.Content.ReadAsStringAsync();
 
-            var items = textRespose.FromJson<List<Image>>();
+            var items = textRespose.FromJson<List<Image>>().OrderByDescending(x=>x.Date);
 
-            foreach (var image in items)
+            foreach (Image image in items)
             {
-                var oimage = new NatGeoImage(image.Id.ToString(), image.Title, string.Empty, image.Url, image.Description,
-                                            string.Empty, _potdGroup);
-                _potdGroup.Items.Add(oimage);
+                var oimage = new NatGeoImage(
+                    image.Id.ToString(),
+                    image.Title,
+                    image.Url,
+                    image.Description);
+                oimage.PhotographerName = image.Photographer;
+                oimage.PhotographerUrl = image.PhotographerUrl;
+                oimage.Date = image.Date;
+                NatGeoImageCollection.AllItems.Add(oimage);
+                _natGeoImageCollection.Add(oimage);
             }
         }
     }

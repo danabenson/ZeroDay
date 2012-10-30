@@ -4,8 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using NatGeoMetroApp.DataModel;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -46,11 +48,18 @@ namespace NatGeoMetroApp
                 navigationParameter = pageState["SelectedItem"];
             }
 
-            // TODO: Create an appropriate data model for your problem domain to replace the sample data
             var item = NatGeoDataSource.GetItem((String)navigationParameter);
-            this.DefaultViewModel["Group"] = item.Group;
-            this.DefaultViewModel["Items"] = item.Group.Items;
-            this.flipView.SelectedItem = item;
+            this.DefaultViewModel["Items"] = NatGeoDataSource.Items;
+            this.DefaultViewModel["Item"] = this.flipView.SelectedItem = item;
+        }
+
+        protected override void OnKeyUp(KeyRoutedEventArgs e)
+        {
+            if (e.Key == VirtualKey.Escape)
+            {
+                Frame.Navigate(typeof(GroupedItemsPage));
+            }
+            base.OnKeyUp(e);
         }
 
         /// <summary>
@@ -63,6 +72,11 @@ namespace NatGeoMetroApp
         {
             var selectedItem = (NatGeoImage)this.flipView.SelectedItem;
             pageState["SelectedItem"] = selectedItem.UniqueId;
+        }
+
+        private void FlipView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            this.DefaultViewModel["Item"] = this.flipView.SelectedItem;
         }
     }
 }
