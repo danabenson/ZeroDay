@@ -6,6 +6,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.System;
 using Windows.UI.Core;
+using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -44,6 +45,24 @@ namespace NatGeoMetroApp.Common
             typeof(LayoutAwarePage), null);
 
         private List<Control> _layoutAwareControls;
+
+        internal bool EnsureUnsnapped()
+        {
+            // FilePicker APIs will not work if the application is in a snapped state. If an app wants to show a FilePicker while snapped,
+            // it must attempt to unsnap first.
+            bool unsnapped = ((ApplicationView.Value != ApplicationViewState.Snapped) || ApplicationView.TryUnsnap());
+            if (!unsnapped)
+            {
+                NotifyUser("Cannot unsnap the sample application.");
+            }
+            return unsnapped;
+        }
+
+        public void NotifyUser(string strMessage)
+        {
+            var msg = new MessageDialog(strMessage);
+            msg.ShowAsync();
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LayoutAwarePage"/> class.

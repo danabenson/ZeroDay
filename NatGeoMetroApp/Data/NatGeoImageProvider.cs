@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using NatGeoMetroApp.Common;
@@ -25,7 +26,7 @@ namespace NatGeoMetroApp.Data
             HttpResponseMessage response = await _client.GetAsync(host);
             string textRespose = await response.Content.ReadAsStringAsync();
 
-            var items = textRespose.FromJson<List<Image>>().OrderByDescending(x=>x.Date);
+            var items = textRespose.FromJson<List<Image>>().OrderByDescending(x=>x.ParsedDate);
 
             foreach (Image image in items)
             {
@@ -34,12 +35,15 @@ namespace NatGeoMetroApp.Data
                     image.Title,
                     image.Url,
                     image.Description);
+                oimage.DownloadUrl = image.DownloadUrl;
+                oimage.ImageUrl = image.Url;
                 oimage.PhotographerName = image.Photographer;
                 oimage.PhotographerUrl = image.PhotographerUrl;
-                oimage.Date = image.Date;
+                oimage.Date = image.ParsedDate.ToString("MMMM dd, yyyy");
                 NatGeoImageCollection.AllItems.Add(oimage);
                 _natGeoImageCollection.Add(oimage);
             }
+
         }
     }
 }

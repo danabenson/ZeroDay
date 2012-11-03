@@ -55,8 +55,17 @@
             <ItemsPanelTemplate>
                 <VariableSizedWrapGrid Orientation="Vertical" Margin="0,0,80,0"/>
             </ItemsPanelTemplate>
+            <GridView.Transitions>
+                <TransitionCollection>
+                    <AddDeleteThemeTransition/>
+                </TransitionCollection>
+            </GridView.Transitions>
         </GridView>
 
+<ProgressBar Grid.Row="1" Grid.Column="1" Width="Auto" IsIndeterminate="True" Value="0"
+                         ShowPaused="{Binding IsChecked,ElementName=PausedRB}"
+                         ShowError="{Binding IsChecked,ElementName=ErrorRB}" x:Name="Waiting"/>
+        
         <!-- Vertical scrolling list only used when snapped -->
         <ListView
             x:Name="itemListView"

@@ -19,6 +19,97 @@
             d:Source="{Binding Items, Source={d:DesignInstance Type=Design:SampleDataSource, IsDesignTimeCreatable=True}}"/>
     </Page.Resources>
 
+    <Page.BottomAppBar>
+        <AppBar x:Name="BottomAppBar1" IsSticky="False" AutomationProperties.Name="Bottom App Bar">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="400"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel 
+                    x:Name="LeftPanel" 
+                    Orientation="Horizontal" 
+                    Grid.Column="0" 
+                    HorizontalAlignment="Left">
+                    <Button 
+                        x:Name="Back" 
+                        AutomationProperties.Name="Back" 
+                        Style="{StaticResource BackAppBarButtonStyle}" 
+                        HorizontalAlignment="Left" 
+                        Click="GoBack"/>
+
+                    <!--<Button x:Name="Separator" Style="{StaticResource AppBarSeparatorButtonStyle}"/>
+                    <Button x:Name="Edit" Style="{StaticResource EditAppBarButtonStyle}" Tag="Edit"/>
+                    <Button x:Name="Save" Style="{StaticResource SaveAppBarButtonStyle}" Tag="Save"/>
+                    <Button x:Name="Delete" Style="{StaticResource DeleteAppBarButtonStyle}" Tag="Delete"/>-->
+
+                </StackPanel>
+                <StackPanel 
+                    Orientation="Vertical" 
+                    Grid.Column="1" >
+                    <TextBlock 
+                                        x:Name="pageTitle" 
+                                        Text="{Binding Item.Title}" 
+                                        Grid.Row="0" 
+                                        TextWrapping="Wrap"
+                                        Margin="0,4,0,10" 
+                                        FontSize="32"/>
+                    <TextBlock 
+                                        x:Name="Description" 
+                                        Text="{Binding Item.Description}" 
+                                        Style="{StaticResource DetailsStyle}" 
+                                        Margin="10, 0, 0, 0"
+                                        Height="Auto"
+                                        TextWrapping="Wrap"
+                                        Grid.Row="1"/>
+
+                    <HyperlinkButton 
+                                            NavigateUri="{Binding Item.PhotographerUrl}" 
+                                            FontSize="11" 
+                                            VerticalAlignment="Top" 
+                                            HorizontalAlignment="Left" 
+                                            Padding="0,0,0,0" 
+                                            BorderThickness="0" 
+                                            Height="27" 
+                                            Grid.Row="3" 
+                                        Margin="10,0,0,0">
+
+                        <TextBlock 
+                                            x:Name="photographerName" 
+                                            Text="{Binding Item.PhotographerName}" 
+                                            Style="{StaticResource DetailsStyle}" 
+                                            FontSize="11" 
+                                            VerticalAlignment="Top"/>
+
+                    </HyperlinkButton>
+                    <TextBlock 
+                                        x:Name="Date" 
+                                        Text="{Binding Item.Date}" 
+                                        Style="{StaticResource DetailsStyle}" 
+                                        Margin="10, 0, 0, 0" 
+                                        Grid.Row="2"/>
+                </StackPanel>
+
+
+                <StackPanel 
+                    x:Name="RightPanel" 
+                    Orientation="Horizontal" 
+                    Grid.Column="2" 
+                    HorizontalAlignment="Right">
+
+                    <Button x:Name="Share" Style="{StaticResource ShareAppBarButtonStyle}" Tag="Share" Click="Share_Click"/>
+                    <Button x:Name="SetAsLockScreen" Style="{StaticResource SetLockScreenAppBarButtonStyle}" Tag="Set As Lock Screen" Click="SetAsLockScreen_Click"/>
+                    <Button x:Name="Save" Style="{StaticResource SaveAppBarButtonStyle}" Tag="Save" Click="Save_Click"/>
+                    <!--<Button x:Name="Print" Style="{StaticResource PrintAppBarButtonStyle}" Tag="Print"/>-->
+
+
+                </StackPanel>
+
+            </Grid>
+        </AppBar>
+    </Page.BottomAppBar>
+
     <FlipView
             x:Name="flipView"
             AutomationProperties.AutomationId="ItemsFlipView"
@@ -41,78 +132,13 @@
                                 <RowDefinition />
                             </Grid.RowDefinitions>
 
-                            <StackPanel
-                                    x:Name="Details" 
-                                    Orientation="Vertical" 
-                                    Grid.Column="0"
-                                    Grid.Row="0"
-                                    Width="175"
-                                    HorizontalAlignment="Left">
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition/>
-                                        <RowDefinition/>
-                                        <RowDefinition/>
-                                        <RowDefinition/>
-                                        <RowDefinition/>
-                                        <RowDefinition/>
-                                    </Grid.RowDefinitions>
-                                    <Button 
-                                        x:Name="backButton" 
-                                        Click="GoBack" 
-                                        IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" 
-                                        Style="{StaticResource BackButtonStyle}" Margin="25,0,0,10" Grid.Row="0"/>
-
-                                    <TextBlock 
-                                        x:Name="pageTitle" 
-                                        Text="{Binding Title}" 
-                                        Grid.Row="1" 
-                                        TextWrapping="Wrap"
-                                        Margin="0,4,0,10" 
-                                        FontSize="24"/>
-
-                                    
-                                    <TextBlock 
-                                        x:Name="Description" 
-                                        Text="{Binding Description}" 
-                                        Style="{StaticResource DetailsStyle}" 
-                                        Margin="10, 0, 0, 0"
-                                        Height="Auto"
-                                        TextWrapping="Wrap"
-                                        Grid.Row="2"/>
-                                    <TextBlock 
-                                        x:Name="Date" 
-                                        Text="{Binding Item.Date}" 
-                                        Style="{StaticResource DetailsStyle}" 
-                                        Margin="10, 0, 0, 0" 
-                                        Grid.Row="3"/>
-<HyperlinkButton 
-                                            NavigateUri="{Binding PhotographerUrl}" 
-                                            FontSize="11" 
-                                            VerticalAlignment="Top" 
-                                            HorizontalAlignment="Left" 
-                                            Padding="0,0,0,4" 
-                                            BorderThickness="0" 
-                                            Height="27" 
-                                            Grid.Row="4" Margin="38,10,38,0">
-
-                                        <TextBlock 
-                                            x:Name="photographerName" 
-                                            Text="{Binding PhotographerName}" 
-                                            Style="{StaticResource DetailsStyle}" 
-                                            FontSize="11" 
-                                            VerticalAlignment="Top"/>
-
-                                    </HyperlinkButton>
-
-                                </Grid>
-                            </StackPanel>
-
                             <Image 
                                     x:Name="image" 
                                     Stretch="Uniform" 
                                     Source="{Binding Image}" 
                                     Grid.Column="1"
+                                    ImageOpened="Image_Opened"
+                                    Loaded="Image_Loaded"
                                     Grid.Row="0" HorizontalAlignment="Left"/>
 
                         </Grid>

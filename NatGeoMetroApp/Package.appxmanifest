@@ -1,39 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-
-  <Identity Name="33017d9a-a685-43dd-96c5-cf65ab52ed4f"
-            Publisher="CN=Dana"
-            Version="1.0.0.0" />
-
+  <Identity Name="33017d9a-a685-43dd-96c5-cf65ab52ed4f" Publisher="CN=Dana" Version="1.0.0.0" />
   <Properties>
     <DisplayName>NatGeoMetroApp</DisplayName>
     <PublisherDisplayName>Dana</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
-
   <Prerequisites>
     <OSMinVersion>6.2.0</OSMinVersion>
     <OSMaxVersionTested>6.2.0</OSMaxVersionTested>
   </Prerequisites>
-
   <Resources>
-    <Resource Language="x-generate"/>
+    <Resource Language="x-generate" />
   </Resources>
-
   <Applications>
-    <Application Id="App"
-        Executable="$targetnametoken$.exe"
-        EntryPoint="NatGeoMetroApp.App">
-        <VisualElements
-            DisplayName="NatGeoMetroApp"
-            Logo="Assets\Logo.png"
-            SmallLogo="Assets\SmallLogo.png"
-            Description="NatGeoMetroApp"
-            ForegroundText="light"
-            BackgroundColor="#464646">
-            <DefaultTile ShowName="allLogos" />
-            <SplashScreen Image="Assets\SplashScreen.png" />
-        </VisualElements>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="NatGeoMetroApp.App">
+      <VisualElements DisplayName="Nation Geography Picutre of the Day" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="Browse pictures used for National Geographic's Picture of the Day." ForegroundText="light" BackgroundColor="#000000" ToastCapable="true">
+        <DefaultTile ShowName="allLogos" ShortName="Picture of the Day" WideLogo="Assets\WideLogo.png" />
+        <SplashScreen Image="Assets\SplashScreen.png" />
+        <InitialRotationPreference>
+          <Rotation Preference="landscape" />
+        </InitialRotationPreference>
+      </VisualElements>
     </Application>
   </Applications>
   <Capabilities>

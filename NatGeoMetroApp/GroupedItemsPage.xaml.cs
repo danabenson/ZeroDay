@@ -35,12 +35,24 @@ namespace NatGeoMetroApp
             DefaultViewModel["Items"] = NatGeoDataSource.Items;
             NatGeoDataSource.Items.CollectionChanged += (sender, args) =>
                                                             {
+                                                                Waiting.Visibility = Visibility.Collapsed;
+                                                                itemGridView.Visibility = Visibility.Visible;
                                                                 itemGridView.Focus(FocusState.Keyboard);
                                                             };
         }
 
         protected override void OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs e)
         {
+            if (NatGeoDataSource.Items.Count == 0)
+            {
+                Waiting.Visibility = Visibility.Visible;
+                itemGridView.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                Waiting.Visibility = Visibility.Collapsed;
+                itemGridView.Visibility = Visibility.Visible;
+            }
             itemGridView.Focus(FocusState.Keyboard);
             base.OnNavigatedTo(e);
         }

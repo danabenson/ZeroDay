@@ -22,5 +22,10 @@ namespace NatGeoMetroApp.Data
         public string Photographer { get; set; }
 
         public string PhotographerUrl { get; set; }
+
+        public DateTime ParsedDate
+        {
+            get { return DateTime.Parse(Date); }
+        }
     }
 }

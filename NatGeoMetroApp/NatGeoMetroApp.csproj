@@ -106,7 +106,10 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\Common.cs" />
+    <Compile Include="Common\ContentInterfaces.cs" />
     <Compile Include="Common\StringExtensions.cs" />
+    <Compile Include="Common\ToastContent.cs" />
     <Compile Include="DataModel\Design\SampleDataCommon.cs" />
     <Compile Include="DataModel\Design\SampleDataGroup.cs" />
     <Compile Include="DataModel\Design\SampleDataItem.cs" />
@@ -137,10 +140,12 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <None Include="Assets\SplashScreen.pdn" />
     <None Include="Common\ReadMe.txt" />
     <None Include="NatGeoMetroApp_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\BadgeLogo.png" />
     <Content Include="Assets\Logo.png" />
     <Content Include="Assets\SmallLogo.png" />
     <Content Include="Assets\SplashScreen.png" />
@@ -148,6 +153,7 @@
     <Content Include="Assets\LightGray.png" />
     <Content Include="Assets\MediumGray.png" />
     <Content Include="Assets\DarkGray.png" />
+    <Content Include="Assets\WideLogo.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
