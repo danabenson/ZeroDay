@@ -10,7 +10,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Common/StandardStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <x:String x:Key="AppName">National Geographic Images of the Day</x:String>
+            <x:String x:Key="AppName">National Geographic Photos of the Day</x:String>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
