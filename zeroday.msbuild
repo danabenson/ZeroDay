@@ -5,16 +5,16 @@
     <TargetServer>https://ec2-184-73-116-39.compute-1.amazonaws.com:8172/msdeploy.axd</TargetServer>
     <DeployUsername>Administrator</DeployUsername>
     <DeployPassword>ST3PAPmvMb</DeployPassword>
-    <DeployWebSiteName>"Default Web Site"</DeployWebSiteName>
+    <DeployWebSiteName>"WebAPI"</DeployWebSiteName>
     <PublishedWebsiteFolder>$(MSBuildProjectDirectory)\ZeroDay.API</PublishedWebsiteFolder>
     <MSDeploy>"C:\Program Files\IIS\Microsoft Web Deploy V3\msdeploy.exe"</MSDeploy>
   </PropertyGroup>
 
-  <Target Name="DeployAPI">
+  <Target Name="Deploy">
     <Exec Command="$(MSDeploy) -verb:sync -source:iisApp=&quot;$(PublishedWebsiteFolder)&quot; -dest:iisApp=$(DeployWebSiteName),wmsvc=$(TargetServer),userName=$(DeployUsername),password=$(DeployPassword) -allowUntrusted" />
   </Target>
 
-  <Target Name="BuildAPI">
+  <Target Name="Build">
     <ItemGroup>
       <ProjectToBuild Include="ZeroDay.sln">
         <Properties>OutputPath=$(OutputDir);Configuration=Release;MvcBuildViews=false</Properties>
